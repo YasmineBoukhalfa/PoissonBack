@@ -3,6 +3,7 @@ import {loginHandler, registerUserHandler, getUsersHandler, deleteUsersHandler, 
 import { $ref } from "./user.schema";
 async function userRoutes(server: FastifyInstance){
 
+//register route
 server.post('/',{
 
     schema: {
@@ -15,7 +16,7 @@ server.post('/',{
 }, registerUserHandler);
 
 
-
+//login route
 server.post('/login', {
 
     schema:{
@@ -28,31 +29,10 @@ server.post('/login', {
 
 
 
-
+//Find users route
 server.get('/findUsers', getUsersHandler)
 
-
-
-
-
-/*server.delete('/:id', {
-    schema: {
-        params: {
-            type: 'object',
-            properties: {
-                id: { type: 'string' }
-            }
-        },
-        response: {
-            200: {
-                type: 'object',
-                properties: {
-                    message: { type: 'string' }
-                }
-            }
-        }
-    }
-}, deleteUsersHandler)*/
+//delete user route
 server.delete('/:id', {
     schema: {
         params: {
@@ -74,7 +54,7 @@ server.delete('/:id', {
 
 
 
-//update user 
+//update user route
 server.put('/:id', {
     schema: {
         params: {
